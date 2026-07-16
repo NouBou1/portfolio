@@ -3,11 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Noureddin Boussaada — Frontend Developer</title>
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <header class="header" id="top">
+        <div class="container header__inner">
+            <div class="header__left">
+                <div class="lang-toggle" role="group" aria-label="Language switch">
+                    <button type="button" class="lang-toggle__btn is-active" data-lang="en">EN</button>
+                    <button type="button" class="lang-toggle__btn" data-lang="de">DE</button>
+                </div>
+
+                <nav class="nav" aria-label="Primary">
+                    <a class="nav__link" href="#about">About me</a>
+                    <a class="nav__link" href="#skills">Skills</a>
+                    <a class="nav__link" href="#projects">Projects</a>
+                </nav>
+            </div>
+
+            <a class="logo" href="#top" aria-label="Back to top">
+                <span class="logo__mark"><img src="assets/images/profile/my_logo.png" alt=""></span>
+                <span class="logo__text">Noureddin<br>Boussaada</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero__inner">
+                <div class="hero__content">
+                    <p class="hero__overline">Frontend Developer</p>
+                    <h1 class="hero__name">
+                        <span class="hero__name-part">Noureddin</span>
+                        <span class="hero__name-part">Boussaada</span>
+                    </h1>
+
+                    <div class="hero__actions">
+                        <a href="#projects" class="btn btn--outline">
+                            <span class="btn__label">Check my work</span>
+                            <span class="btn__track" aria-hidden="true">
+                                <span class="btn__track-item">Check my work</span>
+                                <span class="btn__track-item">Check my work</span>
+                            </span>
+                        </a>
+                        <a href="#contact" class="btn btn--outline">
+                            <span class="btn__label">Contact me</span>
+                            <span class="btn__track" aria-hidden="true">
+                                <span class="btn__track-item">Contact me</span>
+                                <span class="btn__track-item">Contact me</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="hero__aside">
+                    <a class="hero__email" href="mailto:noureddin.boussaada@email.com">noureddin.boussaada@email.com</a>
+                    <ul class="hero__socials">
+                        <li>
+                            <a class="hero__social" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">
+                                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="hero__social" href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                    <span class="hero__aside-line" aria-hidden="true"></span>
+                </aside>
+
+                <button type="button" class="scroll-indicator" data-scroll-target="#about" aria-label="Scroll to next section">
+                    <span class="scroll-indicator__circle">
+                        <span class="scroll-indicator__arrow">&darr;</span>
+                    </span>
+                    <span class="scroll-indicator__line"></span>
+                </button>
+            </div>
+
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee__track">
+                    <span class="marquee__group">
+                        <span>Available for remote work</span>
+                        <span class="marquee__dot">&bull;</span>
+                        <span>Frontend Developer</span>
+                        <span class="marquee__dot">&bull;</span>
+                        <span>Based in Cologne</span>
+                        <span class="marquee__dot">&bull;</span>
+                        <span>Open to work</span>
+                        <span class="marquee__dot">&bull;</span>
+                    </span>
+                    <span class="marquee__group">
+                        <span>Available for remote work</span>
+                        <span class="marquee__dot">&bull;</span>
+                        <span>Frontend Developer</span>
+                        <span class="marquee__dot">&bull;</span>
+                        <span>Based in Cologne</span>
+                        <span class="marquee__dot">&bull;</span>
+                        <span>Open to work</span>
+                        <span class="marquee__dot">&bull;</span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <header class="container">
+                <p class="section__eyebrow">Who I Am</p>
+                <h2 class="section__title">About me</h2>
+            </header>
+        </section>
+
+        <section id="skills" class="section">
+            <header class="container">
+                <p class="section__eyebrow">What I Use</p>
+                <h2 class="section__title">Skills</h2>
+            </header>
+        </section>
+
+        <section id="projects" class="section">
+            <header class="container">
+                <p class="section__eyebrow">Selected Work</p>
+                <h2 class="section__title">Projects</h2>
+            </header>
+        </section>
+
+        <section id="contact" class="section">
+            <header class="container">
+                <p class="section__eyebrow">Get In Touch</p>
+                <h2 class="section__title">Contact me</h2>
+            </header>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

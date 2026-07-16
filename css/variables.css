@@ -1,0 +1,24 @@
+:root {
+  --color-bg: #1c1c1c;
+  --color-bg-soft: #141414;
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-strong: rgba(255, 255, 255, 0.5);
+  --color-text: #FFFFFF;
+  --color-text-muted: #3DCFB6;
+  --color-accent: #3DCFB6;
+  --color-accent-strong: #08463b;
+  --color-accent-soft: rgba(31, 174, 131, 0.15);
+
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "Fira Code", "Courier New", monospace;
+  --font-name: "Karla", "Segoe UI", sans-serif;
+
+  --container-width: 1680px;
+  --container-padding: clamp(1.5rem, 5vw, 4rem);
+  --header-height: clamp(96px, 10vw, 192px);
+
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.4s ease;
+}
