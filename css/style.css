@@ -443,6 +443,118 @@ body {
     font-weight: 500;
 }
 
+/* ---------- About ---------- */
+.about__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    align-items: start;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding-top: clamp(1rem, 2vw, 1.5rem);
+    max-width: min(100%, 150vh);
+    margin-inline: auto;
+}
+
+.about__media {
+    position: relative;
+    transform: translateY(-0.5rem);
+}
+
+.about .section__eyebrow {
+    font-family: var(--font-name);
+    font-size: 24px;
+}
+
+.about__frame {
+    position: absolute;
+    left: -40px;
+    bottom: -40px;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-image: repeating-linear-gradient(45deg, var(--color-accent) 0 1.5px, transparent 1.5px 26px);
+}
+
+.about__image {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.about__content {
+    display: flex;
+    flex-direction: column;
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.about__card {
+    border: 1px solid var(--color-accent);
+    border-radius: 24px;
+    padding: clamp(1.75rem, 2.5vw, 2.5rem);
+    background-color: #16211e;
+    box-shadow: 0 30px 70px -25px rgba(0, 0, 0, 0.6);
+}
+
+.about__title {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 64px;
+    color: var(--color-accent);
+    margin-bottom: 1.0rem;
+}
+
+.about__text {
+    color: var(--color-text);
+    font-family: var(--font-name);
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+.about__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.about__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.about__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+.about__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.about__item-text {
+    color: var(--color-text);
+    opacity: 0.85;
+    line-height: 1.5;
+    font-family: var(--font-name);
+    font-size: 18px;
+    font-weight: 400;
+
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
     .nav {
@@ -455,6 +567,19 @@ body {
 
     .hero__name {
         gap: 0.35rem;
+    }
+
+    .about__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .about__content {
+        padding-top: 2rem;
+    }
+
+    .about__frame {
+        left: -12px;
+        bottom: -12px;
     }
 }
 
