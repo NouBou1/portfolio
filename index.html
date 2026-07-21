@@ -241,11 +241,119 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
-            <header class="container">
-                <p class="section__eyebrow">Selected Work</p>
-                <h2 class="section__title">Projects</h2>
-            </header>
+        <section id="projects" class="section projects">
+            <div class="container projects__inner">
+                <header class="projects__header">
+                    <p class="section__eyebrow">Portfolio</p>
+                    <h2 class="projects__title">Featured Projects</h2>
+                    <p class="projects__intro">
+                        Explore a selection of my work here — interact with projects to see my skills in action.
+                    </p>
+                </header>
+
+                <div class="projects__body">
+                    <ul class="projects__list">
+                        <li class="project">
+                            <a class="project__link"
+                               href="#"
+                               rel="noopener"
+                               data-preview="assets/images/projects/join.svg"
+                               data-index="01"
+                               data-desc="Task manager inspired by the Kanban System. Create and organize tasks using drag and drop functions, assign users and categories."
+                               data-github="#"
+                               data-live="#">
+                                <span class="project__name">
+                                    Join
+                                    <svg class="project__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M7 17 17 7M8 7h9v9"/>
+                                    </svg>
+                                </span>
+                                <span class="project__stack">JavaScript | HTML | CSS | Firebase</span>
+                            </a>
+                        </li>
+                        <li class="project">
+                            <a class="project__link"
+                               href="#"
+                               rel="noopener"
+                               data-preview="assets/images/projects/el-pollo-loco.svg"
+                               data-index="02"
+                               data-desc="Jump, run and throw game based on object-oriented approach. Help Pepe find coins and tabasco salsa to fight against the crazy hen."
+                               data-github="#"
+                               data-live="#">
+                                <span class="project__name">
+                                    El Pollo Loco
+                                    <svg class="project__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M7 17 17 7M8 7h9v9"/>
+                                    </svg>
+                                </span>
+                                <span class="project__stack">HTML | CSS | JavaScript</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="projects__preview">
+                        <span class="projects__preview-frame" aria-hidden="true"></span>
+                        <img class="projects__preview-image" id="projectsPreviewImage" src="assets/images/projects/join.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section testimonials">
+            <div class="container testimonials__header">
+                <h2 class="testimonials__title">What my colleagues say about me</h2>
+            </div>
+
+            <div class="testimonials__carousel">
+                <div class="testimonials__viewport">
+                    <ul class="testimonials__track" id="testimonialsTrack">
+                        <li class="testimonial">
+                            <span class="testimonial__quote" aria-hidden="true">
+                                <img src="assets/icons/quotes.svg" alt="">
+                            </span>
+                            <p class="testimonial__text">Noureddin has proven to be a reliable group partner. His technical skills and proactive approach were crucial to the success of our project.</p>
+                            <div class="testimonial__footer">
+                                <span class="testimonial__line" aria-hidden="true"></span>
+                                <span class="testimonial__author">H.Janisch - Team Partner</span>
+                            </div>
+                        </li>
+                        <li class="testimonial">
+                            <span class="testimonial__quote" aria-hidden="true">
+                                <img src="assets/icons/quotes.svg" alt="">
+                            </span>
+                            <p class="testimonial__text">I had the good fortune of working with Noureddin in a group project at the Developer Akademie that involved a lot of effort. He always stayed calm, cool, and focused, and made sure our team was set up for success. He's super knowledgeable, easy to work with, and I'd happily work with him again given the chance.</p>
+                            <div class="testimonial__footer">
+                                <span class="testimonial__line" aria-hidden="true"></span>
+                                <span class="testimonial__author">A. Fischer - Team Partner</span>
+                            </div>
+                        </li>
+                        <li class="testimonial">
+                            <span class="testimonial__quote" aria-hidden="true">
+                                <img src="assets/icons/quotes.svg" alt="">
+                            </span>
+                            <p class="testimonial__text">Our project benefited enormously from Noureddin's efficient way of working.</p>
+                            <div class="testimonial__footer">
+                                <span class="testimonial__line" aria-hidden="true"></span>
+                                <span class="testimonial__author">T.Schulz - Frontend Developer</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="container testimonials__controls">
+                    <button type="button" class="testimonials__arrow" id="testimonialsPrev" aria-label="Previous testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M19 12H5M11 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="testimonials__dots" id="testimonialsDots"></div>
+                    <button type="button" class="testimonials__arrow" id="testimonialsNext" aria-label="Next testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </section>
 
         <section id="contact" class="section">
@@ -255,6 +363,52 @@
             </header>
         </section>
     </main>
+
+    <dialog class="project-modal" id="projectModal">
+        <div class="project-modal__card">
+            <button type="button" class="project-modal__close" data-modal-close aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6 6 18"/>
+                </svg>
+            </button>
+
+            <div class="project-modal__content">
+                <span class="project-modal__index" id="projectModalIndex"></span>
+                <h3 class="project-modal__title" id="projectModalTitle"></h3>
+
+                <p class="project-modal__label">What is this project about?</p>
+                <p class="project-modal__desc" id="projectModalDesc"></p>
+
+                <ul class="project-modal__stack" id="projectModalStack"></ul>
+
+                <div class="project-modal__actions">
+                    <a class="project-modal__btn" id="projectModalGithub" href="#" target="_blank" rel="noopener">
+                        GitHub
+                        <svg class="project-modal__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M7 17 17 7M8 7h9v9"/>
+                        </svg>
+                    </a>
+                    <a class="project-modal__btn" id="projectModalLive" href="#" target="_blank" rel="noopener">
+                        Live Test
+                        <svg class="project-modal__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M7 17 17 7M8 7h9v9"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-modal__media">
+                <img class="project-modal__image" id="projectModalImage" src="" alt="">
+            </div>
+
+            <button type="button" class="project-modal__next" id="projectModalNext">
+                Next project
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+            </button>
+        </div>
+    </dialog>
 
     <script src="js/main.js"></script>
 </body>
