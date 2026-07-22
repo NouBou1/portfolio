@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/skills.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/testimonials.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
     <header class="header" id="top">
@@ -128,7 +135,7 @@
                     <div class="about__card">
                         <h2 class="about__title">About me</h2>
                         <p class="about__text">
-                            From blue-collar to clean code: As a former HVAC technician, I know exactly how to understand complex systems from the ground up, troubleshoot methodically, and think in solutions. Today, that same passion for precision, logic, and building things that just work drives my coding. As a Frontend Developer, I bring this exact hands-on mindset to every digital project.
+                            Aspiring Frontend Developer looking for my first junior role. I bring a strong background in technical system analysis and structured problem-solving. Right now, my main focus is on writing clean code and deepening my hands-on experience with modern web tools every day.
                            <!-- Vom Blaumann zum Code: Als ehemaliger Anlagenmechaniker SHK weiß ich, wie man komplexe Systeme von Grund auf versteht, Fehler strukturiert analysiert und lösungsorientiert denkt. Die Leidenschaft für Präzision, Logik und das Erschaffen von Dingen, die einfach funktionieren, treibt mich heute beim Programmieren an. Als Fullstack-Developer bringe ich genau diese Hands-on-Mentalität in jedes digitale Projekt ein. -->
                         </p>
 
@@ -347,13 +354,70 @@
             </div>
         </section>
 
-        <section id="contact" class="section">
-            <header class="container">
-                <p class="section__eyebrow">Get In Touch</p>
-                <h2 class="section__title">Contact me</h2>
-            </header>
+        <section id="contact" class="section contact">
+            <div class="container contact__inner">
+                <div class="contact__intro">
+                    <p class="section__eyebrow">Contact me</p>
+                    <h2 class="contact__title">Let's work<br>together</h2>
+
+                    <h3 class="contact__subtitle">Got a problem to solve?</h3>
+                    <p class="contact__text">
+                        Encourage people to contact you and describe what role you are interested in. Show that you will add value to their projects through your work.
+                    </p>
+                    <p class="contact__cta">
+                        Need a Frontend developer? <a class="contact__link" href="#contactForm">Let's talk!</a>
+                    </p>
+                </div>
+
+                <form class="contact__form" id="contactForm" action="php/contact.php" method="POST">
+                    <div class="contact__field">
+                        <label class="contact__label" for="contactName">What's your name?</label>
+                        <input class="contact__input" type="text" id="contactName" name="name" placeholder="Your name goes here" required>
+                    </div>
+
+                    <div class="contact__field">
+                        <label class="contact__label" for="contactEmail">What's your email?</label>
+                        <input class="contact__input" type="email" id="contactEmail" name="email" placeholder="youremail@email.com" required>
+                    </div>
+
+                    <div class="contact__field">
+                        <label class="contact__label" for="contactMessage">How can I help you?</label>
+                        <textarea class="contact__input contact__input--textarea" id="contactMessage" name="message" rows="3" placeholder="Hello Noureddin, I am interested in..." required></textarea>
+                    </div>
+
+                    <label class="contact__checkbox">
+                        <input type="checkbox" id="contactConsent" name="consent" required>
+                        <span class="contact__checkbox-box" aria-hidden="true"></span>
+                        <span class="contact__checkbox-text">I've read the <a class="contact__link" href="legal-notice.html">privacy policy</a> and agree to the processing of my data as outlined.</span>
+                    </label>
+
+                    <button type="submit" class="contact__submit">Say Hello ;)</button>
+                </form>
+            </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <a class="logo footer__logo" href="#top">
+                    <span class="logo__mark"><img src="assets/images/profile/my_logo.png" alt=""></span>
+                    <span class="logo__text">Noureddin<br>Boussaada</span>
+                </a>
+                <p class="footer__role">Frontend Developer</p>
+                <p class="footer__location">Cologne, Germany</p>
+            </div>
+
+            <p class="footer__copyright">&copy; Noureddin Boussaada 2026</p>
+
+            <ul class="footer__links">
+                <li><a href="https://github.com/" target="_blank" rel="noopener">Github</a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="mailto:n.boussaada92@gmail.com">Email</a></li>
+                <li><a href="legal-notice.html">Legal Notice</a></li>
+            </ul>
+        </div>
+    </footer>
 
     <dialog class="project-modal" id="projectModal">
         <div class="project-modal__card">
@@ -402,5 +466,6 @@
     </dialog>
 
     <script src="js/main.js"></script>
+    <script src="js/components/contactForm.js"></script>
 </body>
 </html>
