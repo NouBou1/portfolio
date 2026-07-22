@@ -107,6 +107,21 @@
     mask-size: contain;
 }
 
+.about__icon-glyph--location {
+    -webkit-mask-image: url(../assets/icons/location_on.svg);
+    mask-image: url(../assets/icons/location_on.svg);
+}
+
+.about__icon-glyph--cognition {
+    -webkit-mask-image: url(../assets/icons/cognition.svg);
+    mask-image: url(../assets/icons/cognition.svg);
+}
+
+.about__icon-glyph--releases {
+    -webkit-mask-image: url(../assets/icons/new_releases.svg);
+    mask-image: url(../assets/icons/new_releases.svg);
+}
+
 .about__item-text {
     color: var(--color-text);
     opacity: 0.85;

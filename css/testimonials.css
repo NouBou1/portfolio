@@ -136,6 +136,16 @@
     transition: transform var(--transition-fast);
 }
 
+.testimonials__arrow-icon--prev {
+    -webkit-mask-image: url(../assets/icons/arrow-left.svg);
+    mask-image: url(../assets/icons/arrow-left.svg);
+}
+
+.testimonials__arrow-icon--next {
+    -webkit-mask-image: url(../assets/icons/arrow-right.svg);
+    mask-image: url(../assets/icons/arrow-right.svg);
+}
+
 #testimonialsPrev:hover .testimonials__arrow-icon {
     transform: translateX(-4px);
 }

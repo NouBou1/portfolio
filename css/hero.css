@@ -191,6 +191,16 @@
     mask-size: contain;
 }
 
+.hero__social-icon--github {
+    -webkit-mask-image: url(../assets/icons/github.svg);
+    mask-image: url(../assets/icons/github.svg);
+}
+
+.hero__social-icon--linkedin {
+    -webkit-mask-image: url(../assets/icons/linkedin.svg);
+    mask-image: url(../assets/icons/linkedin.svg);
+}
+
 .hero__social:hover {
     color: var(--color-text);
 

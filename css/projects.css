@@ -89,6 +89,8 @@
     width: 20px;
     height: 20px;
     background-color: currentColor;
+    -webkit-mask-image: url(../assets/icons/arrow-up-right.svg);
+    mask-image: url(../assets/icons/arrow-up-right.svg);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
@@ -208,6 +210,8 @@
     width: 20px;
     height: 20px;
     background-color: currentColor;
+    -webkit-mask-image: url(../assets/icons/close.svg);
+    mask-image: url(../assets/icons/close.svg);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
@@ -310,6 +314,8 @@
     width: 18px;
     height: 18px;
     background-color: currentColor;
+    -webkit-mask-image: url(../assets/icons/arrow-up-right.svg);
+    mask-image: url(../assets/icons/arrow-up-right.svg);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
@@ -364,6 +370,8 @@
     width: 18px;
     height: 18px;
     background-color: currentColor;
+    -webkit-mask-image: url(../assets/icons/arrow-right.svg);
+    mask-image: url(../assets/icons/arrow-right.svg);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
