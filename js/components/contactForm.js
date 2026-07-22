@@ -7,13 +7,12 @@ function initContactForm() {
     if (!form) return;
 
     const submitBtn = form.querySelector(".contact__submit");
-    const defaultLabel = submitBtn.textContent;
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
+        submitBtn.textContent = translate("formSending");
 
         const payload = {
             name: form.elements.name.value,
@@ -35,16 +34,16 @@ function initContactForm() {
 
             if (response.ok && result?.success) {
                 form.reset();
-                submitBtn.textContent = "Message sent!";
+                submitBtn.textContent = translate("formSent");
             } else {
-                submitBtn.textContent = "Something went wrong";
+                submitBtn.textContent = translate("formError");
             }
         } catch (error) {
-            submitBtn.textContent = "Something went wrong";
+            submitBtn.textContent = translate("formError");
         } finally {
             window.setTimeout(() => {
                 submitBtn.disabled = false;
-                submitBtn.textContent = defaultLabel;
+                submitBtn.textContent = translate("formSubmit");
             }, 3000);
         }
     });
