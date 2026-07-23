@@ -203,7 +203,7 @@ function initProjectsPreview() {
     const setPreview = createPreviewSetter(image, preview);
     const hidePreview = () => preview.classList.remove("is-visible");
 
-    bindProjectPreviewLinks(list, setPreview);
+    bindProjectPreviewLinks(list, preview, setPreview);
     bindProjectPreviewDismiss(list, hidePreview);
 }
 
@@ -216,12 +216,24 @@ function createPreviewSetter(image, preview) {
     };
 }
 
-function bindProjectPreviewLinks(list, setPreview) {
+function positionPreview(list, preview, row) {
+    const rowTop = row.getBoundingClientRect().top - list.getBoundingClientRect().top;
+    const rowCenter = rowTop + row.offsetHeight / 2;
+    const maxTop = Math.max(0, list.offsetHeight - preview.offsetHeight);
+    const top = Math.min(Math.max(rowCenter - preview.offsetHeight / 2, 0), maxTop);
+    preview.style.transform = `translateY(${top}px)`;
+}
+
+function bindProjectPreviewLinks(list, preview, setPreview) {
     const links = list.querySelectorAll(".project__link[data-preview]");
     links.forEach((link) => {
         const src = link.dataset.preview;
-        link.addEventListener("mouseenter", () => setPreview(src));
-        link.addEventListener("focus", () => setPreview(src));
+        const activate = () => {
+            setPreview(src);
+            positionPreview(list, preview, link);
+        };
+        link.addEventListener("mouseenter", activate);
+        link.addEventListener("focus", activate);
     });
 }
 

@@ -120,12 +120,16 @@
 }
 
 .projects__preview {
-    position: sticky;
-    top: calc(var(--header-height) + 1.5rem);
+    position: relative;
+    align-self: start;
+    width: min(100%, 340px);
+    margin-left: auto;
     aspect-ratio: 4 / 3;
     opacity: 0;
     visibility: hidden;
-    transition: opacity var(--transition-medium), visibility var(--transition-medium);
+    will-change: transform;
+    transition: opacity var(--transition-medium), visibility var(--transition-medium),
+        transform var(--transition-medium);
 }
 
 .projects__preview.is-visible {
