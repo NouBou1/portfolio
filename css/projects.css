@@ -29,7 +29,7 @@
 
 .projects__body {
     display: grid;
-    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 2.8fr) minmax(0, 1fr);
     align-items: start;
     gap: clamp(2rem, 5vw, 4rem);
 }

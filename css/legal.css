@@ -1,0 +1,111 @@
+
+.legal {
+    padding-block: calc(90px + clamp(2rem, 6vw, 4rem)) clamp(2rem, 5vw, 4rem);
+}
+
+.legal__inner {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.legal__title {
+    font-family: var(--font-mono);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: var(--color-accent);
+}
+
+.legal__rule {
+    height: 1px;
+    border: 0;
+    background-color: var(--color-border);
+}
+
+.legal__body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 2vw, 1.75rem);
+    width: 100%;
+    max-width: 1150px;
+    margin-inline: auto;
+}
+
+.legal__block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.legal__subtitle {
+    font-family: var(--font-name);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.legal__text {
+    font-family: var(--font-name);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--color-accent);
+}
+
+.legal__text strong {
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.legal__text a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.legal__text a:hover {
+    color: var(--color-accent);
+}
+
+.legal__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-family: var(--font-name);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--color-accent);
+}
+
+.legal__list li {
+    position: relative;
+    padding-left: 1.1rem;
+}
+
+.legal__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.68em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+}
+
+.legal__questions {
+    margin-top: 0.5rem;
+}
+
+.legal__date {
+    font-family: var(--font-name);
+    font-size: 0.9rem;
+    color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+    .legal {
+        padding-block-start: calc(90px + 1.5rem);
+    }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="DA Bubble preview placeholder">
+    <rect width="800" height="600" fill="#0b1f1a"/>
+    <rect x="1" y="1" width="798" height="598" fill="none" stroke="#1c4d43" stroke-width="2"/>
+    <text x="400" y="290" fill="#33e0b0" font-family="monospace" font-size="56" font-weight="700" text-anchor="middle">DA Bubble</text>
+    <text x="400" y="340" fill="#7fbfae" font-family="monospace" font-size="24" text-anchor="middle">Preview – Platzhalter</text>
+</svg>
