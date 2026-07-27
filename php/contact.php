@@ -17,6 +17,12 @@ header("Content-Type: application/json; charset=utf-8");
 // trotzdem im gewohnten Postfach landet.
 $siteEmail = "kontakt@n-boussaada.de";
 
+// Empfaenger. Bewusst getrennt vom Absender: der Absender muss auf der
+// eigenen Domain liegen (SPF), der Empfaenger dagegen direkt das echte
+// Postfach sein. Ueber die Weiterleitung zuzustellen waere ein Hop mehr,
+// der die Mail verlieren kann.
+$recipientEmail = "n.boussaada92@gmail.com";
+
 switch ($_SERVER['REQUEST_METHOD']) {
 
     case 'OPTIONS':
@@ -53,7 +59,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $safeMessage = nl2br(htmlspecialchars($userMessage, ENT_QUOTES, 'UTF-8'));
 
         // Empfängeradresse (nutzt die oben definierte Mail)
-        $recipient = $siteEmail; 
+        $recipient = $recipientEmail;
         $subject = 'Website Contact Form';
 
         $mailBody = "
