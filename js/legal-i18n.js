@@ -4,8 +4,8 @@ const LEGAL_TRANSLATIONS = {
 
         legalImprintTitle: "Imprint",
         legalImprintName: "Noureddin Boussaada",
-        legalImprintStreet: "am Nordpol 2",
-        legalImprintCity: "50937 Cologne",
+        legalImprintStreet: "Ordensstr. 19",
+        legalImprintCity: "50129 Bergheim",
 
         legalBoardTitle: "Exploring the Board",
         legalBoardText: 'Email: <a href="mailto:n.boussaada92@gmail.com">n.boussaada92@gmail.com</a>',
@@ -38,8 +38,8 @@ const LEGAL_TRANSLATIONS = {
 
         legalImprintTitle: "Impressum",
         legalImprintName: "Noureddin Boussaada",
-        legalImprintStreet: "am Nordpol 2",
-        legalImprintCity: "50937 Köln",
+        legalImprintStreet: "Ordensstr. 19",
+        legalImprintCity: "50129 Bergheim",
 
         legalBoardTitle: "Exploring the Board",
         legalBoardText: 'E-Mail: <a href="mailto:n.boussaada92@gmail.com">n.boussaada92@gmail.com</a>',
