@@ -275,7 +275,7 @@
     align-items: center;
     gap: 0.5rem;
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-text);
     opacity: 0.85;
 }
@@ -412,17 +412,115 @@
         display: none;
     }
 
+    /* Single column: a flex column lets the preview absorb the leftover height,
+       so text and buttons always keep their room instead of being squashed. */
     .project-modal__card {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         overflow-y: auto;
     }
 
     .project-modal__media {
         order: -1;
+        flex: 1 1 auto;
+        align-items: stretch;
+        min-height: 72px;
+    }
+
+    .project-modal__image {
+        aspect-ratio: auto;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .project-modal__content,
+    .project-modal__next,
+    .project-modal__close {
+        flex: 0 0 auto;
+    }
+
+    /* The close button gets its own row above the image (as in the design)
+       instead of floating on top of it. */
+    .project-modal__close {
+        position: static;
+        order: -2;
+        align-self: flex-end;
     }
 
     .project-modal__next {
         position: static;
         margin-top: 1.5rem;
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 600px) {
+    .projects__title {
+        font-size: clamp(2rem, 9vw, 2.75rem);
+    }
+
+    .projects__intro {
+        font-size: 1rem;
+    }
+
+    .project__link {
+        gap: 0.35rem;
+        padding-inline: 0.5rem;
+    }
+
+    /* A definite height is what lets the card's flex column distribute space. */
+    .project-modal {
+        max-width: 94vw;
+        height: 94svh;
+        max-height: 94svh;
+    }
+
+    /* Everything below is tuned so the whole card — image, text, both buttons
+       and "next project" — fits on screen without scrolling. */
+    .project-modal__card {
+        height: 100%;
+        padding: 0.875rem;
+        gap: 0.5rem;
+    }
+
+    .project-modal__close {
+        width: 28px;
+        height: 28px;
+    }
+
+    .project-modal__index {
+        font-size: 2rem;
+        line-height: 1;
+    }
+
+    .project-modal__title {
+        font-size: 2rem;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-modal__label {
+        margin-bottom: 0.25rem;
+    }
+
+    .project-modal__desc {
+        margin-bottom: 0.75rem;
+    }
+
+    .project-modal__stack {
+        gap: 0.5rem 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-modal__actions {
+        gap: 0.75rem;
+    }
+
+    .project-modal__btn {
+        padding: 0.7rem 1rem;
+    }
+
+    .project-modal__next {
+        margin-top: 0.75rem;
     }
 }

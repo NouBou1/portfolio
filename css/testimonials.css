@@ -97,7 +97,7 @@
 
 .testimonial__author {
     font-family: var(--font-mono);
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--color-text);
     opacity: 0.85;
     white-space: nowrap;
@@ -171,4 +171,36 @@
 .testimonials__dot.is-active {
     background-color: var(--color-accent);
     transform: scale(1.2);
+}
+
+@media (max-width: 900px) {
+    .testimonials__carousel {
+        gap: 2rem;
+    }
+
+    .testimonial {
+        flex: 0 0 min(640px, 82vw);
+    }
+}
+
+@media (max-width: 600px) {
+    .testimonial {
+        padding: clamp(1.25rem, 5vw, 2.5rem);
+    }
+
+    .testimonial__quote {
+        top: -14px;
+        left: -8px;
+        width: 36px;
+        height: 27px;
+    }
+
+    .testimonial__text {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .testimonial__footer {
+        gap: 0.75rem;
+    }
 }

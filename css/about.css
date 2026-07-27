@@ -49,7 +49,7 @@
 .about__card {
     border: 1px solid var(--color-accent);
     border-radius: 24px;
-    padding: clamp(1.75rem, 2.5vw, 2.5rem);
+    padding: clamp(1.25rem, 4vw, 2.5rem);
     background-color: #16211e;
     box-shadow: 0 30px 70px -25px rgba(0, 0, 0, 0.6);
 }
@@ -145,5 +145,24 @@
     .about__frame {
         left: -12px;
         bottom: -12px;
+    }
+
+    .about__title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+}
+
+@media (max-width: 600px) {
+    .about__text,
+    .about__item-text {
+        font-size: 1rem;
+    }
+
+    .about__list {
+        gap: 1rem;
+    }
+
+    .about__item {
+        gap: 0.75rem;
     }
 }

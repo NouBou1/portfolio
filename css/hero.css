@@ -43,7 +43,7 @@
     gap: 0.5rem;
     font-family: var(--font-name);
     font-weight: 700;
-    font-size: clamp(3.5rem, 9.5vw, 9.375rem);
+    font-size: clamp(2.5rem, 9.5vw, 9.375rem);
     line-height: 1;
 }
 
@@ -55,12 +55,14 @@
 }
 
 .btn {
+    --btn-padding-x: 2rem;
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem;
+    padding: 1rem var(--btn-padding-x);
     border-radius: 999px;
+    font-family: var(--font-name);
     font-size: 1rem;
     font-weight: 500;
     color: var(--color-text);
@@ -76,7 +78,7 @@
 .btn__track {
     position: absolute;
     top: 50%;
-    left: 2rem;
+    left: var(--btn-padding-x);
     display: flex;
     width: max-content;
     transform: translateY(-50%) translateX(0);
@@ -137,13 +139,26 @@
 }
 
 .hero__email {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
     font-family: var(--font-mono);
     font-size: 1rem;
     color: var(--color-text);
     letter-spacing: 0.03em;
     transition: color var(--transition-fast);
+}
+
+.hero__email-text {
+    display: inline-block;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.hero__email .hero__social-icon {
+    display: none;
+    color: var(--color-accent);
+}
+
+.hero__email:hover .hero__social-icon {
+    color: var(--color-text);
 }
 
 .hero__email:hover {
@@ -199,6 +214,11 @@
 .hero__social-icon--linkedin {
     -webkit-mask-image: url(../assets/icons/linkedin.svg);
     mask-image: url(../assets/icons/linkedin.svg);
+}
+
+.hero__social-icon--mail {
+    -webkit-mask-image: url(../assets/icons/mail.svg);
+    mask-image: url(../assets/icons/mail.svg);
 }
 
 .hero__social:hover {
@@ -317,12 +337,87 @@
 }
 
 @media (max-width: 900px) {
-    .hero__aside {
-        display: none;
+
+    .hero__inner {
+        padding-top: 1rem;
+        padding-bottom: clamp(10rem, 34vw, 14rem);
     }
 
     .hero__name {
         gap: 0.35rem;
+    }
+
+    .hero__aside {
+        top: 62%;
+        gap: 0.5rem;
+    }
+
+    .hero__email-text {
+        display: none;
+    }
+
+    .hero__email .hero__social-icon {
+        display: inline-block;
+    }
+
+    .scroll-indicator {
+        top: 65%;
+    }
+
+    .marquee__group {
+        gap: 1rem;
+        padding-right: 1rem;
+        font-size: clamp(1.125rem, 4.5vw, 2rem);
+    }
+}
+
+@media (max-width: 600px) {
+  
+    .hero__actions {
+        flex-wrap: nowrap;
+        align-items: stretch;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .hero__actions .btn {
+        min-width: 0;
+    }
+
+    .hero__actions .btn__label {
+        visibility: visible;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .hero__actions .btn__track {
+        display: none;
+    }
+
+    .btn {
+        --btn-padding-x: 0.75rem;
+        padding-block: 0.75rem;
+    }
+
+    .hero__aside,
+    .scroll-indicator {
+        gap: 1rem;
+    }
+
+    .hero__social-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .scroll-indicator__circle {
+        width: 26px;
+        height: 46px;
+    }
+
+    .marquee {
+        bottom: 2.5rem;
+        padding-block: 0.75rem;
     }
 }
 

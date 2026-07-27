@@ -1,0 +1,28 @@
+# ---------------------------------------------------------------
+# Force HTTPS
+# ---------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Two conditions on purpose: many shared hosts terminate TLS on an
+    # upstream proxy. Apache then sees a plain HTTP request and %{HTTPS}
+    # stays "off" even though the visitor is on HTTPS — checking only
+    # %{HTTPS} would cause an endless redirect loop there.
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ---------------------------------------------------------------
+# HSTS — optional, enable only once HTTPS is verified to work.
+#
+# Tells browsers to never contact this domain over HTTP again, which
+# also closes the gap on the very first request of a visit. Note that
+# this is hard to undo: browsers cache the header for the whole
+# max-age, so a broken certificate later makes the site unreachable
+# rather than just insecure. Only uncomment when the site including
+# every subdomain reliably serves HTTPS.
+# ---------------------------------------------------------------
+# <IfModule mod_headers.c>
+#     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+# </IfModule>

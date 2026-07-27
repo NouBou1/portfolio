@@ -9,6 +9,40 @@
     gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 
+.legal__back {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--color-text);
+    transition: color var(--transition-fast);
+}
+
+.legal__back:hover {
+    color: var(--color-accent);
+}
+
+.legal__back-icon {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-color: currentColor;
+    -webkit-mask-image: url(../assets/icons/arrow-left.svg);
+    mask-image: url(../assets/icons/arrow-left.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    transition: transform var(--transition-fast);
+}
+
+.legal__back:hover .legal__back-icon {
+    transform: translateX(-4px);
+}
+
 .legal__title {
     font-family: var(--font-mono);
     font-size: clamp(2.25rem, 5vw, 3.75rem);
@@ -48,7 +82,7 @@
 
 .legal__text {
     font-family: var(--font-name);
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.65;
     color: var(--color-accent);
 }
@@ -73,7 +107,7 @@
     flex-direction: column;
     gap: 0.25rem;
     font-family: var(--font-name);
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.65;
     color: var(--color-accent);
 }
@@ -100,12 +134,30 @@
 
 .legal__date {
     font-family: var(--font-name);
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-accent);
 }
 
 @media (max-width: 900px) {
     .legal {
         padding-block-start: calc(90px + 1.5rem);
+    }
+
+    .legal__back {
+        display: inline-flex;
+    }
+
+    .legal__title {
+        text-align: left;
+    }
+}
+
+@media (max-width: 600px) {
+    .legal {
+        padding-block-start: calc(76px + 1.5rem);
+    }
+
+    .legal__inner {
+        gap: 1rem;
     }
 }

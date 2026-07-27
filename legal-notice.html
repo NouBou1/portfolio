@@ -38,11 +38,34 @@
                 <span class="logo__mark"><img src="assets/images/profile/my_logo.png" alt=""></span>
                 <span class="logo__text">Noureddin<br>Boussaada</span>
             </a>
+
+            <button type="button" class="burger" id="burger" aria-controls="mobileMenu" aria-expanded="false"
+                aria-label="Open menu" data-i18n-aria-label="menuOpenAria">
+                <span class="burger__bar" aria-hidden="true"></span>
+                <span class="burger__bar" aria-hidden="true"></span>
+                <span class="burger__bar" aria-hidden="true"></span>
+            </button>
         </div>
+
+        <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+            <a class="mobile-menu__link" href="index.html#about" data-i18n="navAbout">About me</a>
+            <a class="mobile-menu__link" href="index.html#skills" data-i18n="navSkills">Skills</a>
+            <a class="mobile-menu__link" href="index.html#projects" data-i18n="navProjects">Projects</a>
+
+            <div class="lang-toggle mobile-menu__lang" role="group" aria-label="Language switch"
+                data-i18n-aria-label="langToggleAria">
+                <button type="button" class="lang-toggle__btn is-active" data-lang="en">EN</button>
+                <button type="button" class="lang-toggle__btn" data-lang="de">DE</button>
+            </div>
+        </nav>
     </header>
 
     <main class="legal">
         <div class="container legal__inner">
+            <a class="legal__back" href="index.html#top" aria-label="Back" data-i18n-aria-label="legalBackAria">
+                <span class="legal__back-icon" aria-hidden="true"></span>
+            </a>
+
             <h1 class="legal__title" data-i18n="legalTitle">Legal Notice</h1>
             <hr class="legal__rule">
 

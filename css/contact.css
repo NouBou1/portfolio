@@ -140,7 +140,7 @@
 
 .contact__checkbox-text {
     font-family: var(--font-name);
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-text);
     opacity: 0.85;
     line-height: 1.5;
@@ -166,5 +166,26 @@
 @media (max-width: 900px) {
     .contact__inner {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact__title {
+        font-size: clamp(1.75rem, 9vw, 4rem);
+        margin-bottom: 1.5rem;
+        hyphens: auto;
+    }
+
+    .contact__form {
+        gap: 1.25rem;
+    }
+
+    .contact__label {
+        font-size: 1rem;
+    }
+
+    .contact__submit {
+        align-self: stretch;
+        padding-inline: 1.5rem;
     }
 }

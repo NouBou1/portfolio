@@ -42,7 +42,26 @@
                 <span class="logo__mark"><img src="assets/images/profile/my_logo.png" alt=""></span>
                 <span class="logo__text">Noureddin<br>Boussaada</span>
             </a>
+
+            <button type="button" class="burger" id="burger" aria-controls="mobileMenu" aria-expanded="false"
+                aria-label="Open menu" data-i18n-aria-label="menuOpenAria">
+                <span class="burger__bar" aria-hidden="true"></span>
+                <span class="burger__bar" aria-hidden="true"></span>
+                <span class="burger__bar" aria-hidden="true"></span>
+            </button>
         </div>
+
+        <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+            <a class="mobile-menu__link" href="#about" data-i18n="navAbout">About me</a>
+            <a class="mobile-menu__link" href="#skills" data-i18n="navSkills">Skills</a>
+            <a class="mobile-menu__link" href="#projects" data-i18n="navProjects">Projects</a>
+
+            <div class="lang-toggle mobile-menu__lang" role="group" aria-label="Language switch"
+                data-i18n-aria-label="langToggleAria">
+                <button type="button" class="lang-toggle__btn is-active" data-lang="en">EN</button>
+                <button type="button" class="lang-toggle__btn" data-lang="de">DE</button>
+            </div>
+        </nav>
     </header>
 
     <main>
@@ -74,7 +93,10 @@
                 </div>
 
                 <aside class="hero__aside">
-                    <a class="hero__email" href="mailto:noureddin.boussaada@email.com">n.boussaada92@gmail.com</a>
+                    <a class="hero__email" href="mailto:n.boussaada92@gmail.com" aria-label="n.boussaada92@gmail.com">
+                        <span class="hero__email-text">n.boussaada92@gmail.com</span>
+                        <span class="hero__social-icon hero__social-icon--mail" aria-hidden="true"></span>
+                    </a>
                     <ul class="hero__socials">
                         <li>
                             <a class="hero__social" href="https://github.com/" target="_blank" rel="noopener"

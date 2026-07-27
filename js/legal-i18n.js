@@ -31,6 +31,7 @@ const LEGAL_TRANSLATIONS = {
 
         legalQuestions: 'For any questions or notices, please contact us at <a href="mailto:n.boussaada92@gmail.com">n.boussaada92@gmail.com</a>.',
         legalDate: "Date: July 23, 2026",
+        legalBackAria: "Back to the homepage",
     },
 
     de: {
@@ -65,6 +66,7 @@ const LEGAL_TRANSLATIONS = {
 
         legalQuestions: 'Bei Fragen oder Hinweisen erreichen Sie uns unter <a href="mailto:n.boussaada92@gmail.com">n.boussaada92@gmail.com</a>.',
         legalDate: "Stand: 23. Juli 2026",
+        legalBackAria: "Zurück zur Startseite",
     },
 };
 
