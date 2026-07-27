@@ -12,7 +12,10 @@ header("Content-Type: application/json; charset=utf-8");
 // ------------------------------------------------------------
 
 // >>> DEINE EMAIL HIER EINTRAGEN <<<
-$siteEmail = "n.boussaada92@gmail.com";
+// Muss auf der eigenen Domain liegen, damit SPF beim Empfaenger passt.
+// Die Weiterleitung dieser Adresse sorgt dafuer, dass die Nachricht
+// trotzdem im gewohnten Postfach landet.
+$siteEmail = "kontakt@n-boussaada.de";
 
 switch ($_SERVER['REQUEST_METHOD']) {
 
