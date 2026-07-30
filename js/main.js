@@ -290,6 +290,8 @@ const TECH_ICONS = {
     firebase: "assets/icons/skills/firebase.svg",
     angular: "assets/icons/skills/angular.svg",
     typescript: "assets/icons/skills/typescript.svg",
+    "rest api": "assets/icons/skills/rest-api.svg",
+    capacitor: "assets/icons/skills/capacitor.svg",
 };
 
 function initProjectModal() {
