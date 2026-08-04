@@ -60,6 +60,25 @@
     gap: 0.5rem;
 }
 
+.contact__field-error {
+    display: block;
+    min-height: 1.5rem;
+    font-family: var(--font-name);
+    font-size: 1rem;
+    color: #ff6b6b;
+    line-height: 1.5;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.contact__field.has-error .contact__field-error {
+    opacity: 1;
+}
+
+.contact__field.has-error .contact__input {
+    border-color: #ff6b6b;
+}
+
 .contact__label {
     font-family: var(--font-mono);
     font-weight: 700;
@@ -80,6 +99,13 @@
     transition: border-color var(--transition-fast);
 }
 
+/* Prevent mobile zoom on focus - minimum 16px font size */
+@media (max-width: 900px) {
+    .contact__input {
+        font-size: 16px;
+    }
+}
+
 .contact__input::placeholder {
     color: var(--color-text);
     opacity: 0.5;
@@ -88,6 +114,15 @@
 .contact__input:focus {
     outline: none;
     border-color: var(--color-accent);
+}
+
+/* Prevent autofill from breaking design */
+.contact__input:-webkit-autofill,
+.contact__input:-webkit-autofill:hover,
+.contact__input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--color-text);
+    -webkit-box-shadow: 0 0 0 1000px var(--color-bg) inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .contact__checkbox {
@@ -155,10 +190,17 @@
     color: var(--color-text);
     font-family: var(--font-name);
     font-size: 1rem;
-    transition: border-color var(--transition-fast), color var(--transition-fast);
+    transition: border-color var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
+    cursor: pointer;
 }
 
-.contact__submit:hover {
+.contact__submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.contact__submit:not(:disabled):hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
 }
