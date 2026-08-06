@@ -42,12 +42,17 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
 
-        $email = $params->email ?? '';
-        $name = $params->name ?? '';
-        $userMessage = $params->message ?? '';
+        $email = trim($params->email ?? '');
+        $name = trim($params->name ?? '');
+        $userMessage = trim($params->message ?? '');
 
-        // Basic validation
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($name) || empty($userMessage)) {
+        // Mirrors the client side rules, so a direct POST cannot bypass them.
+        $emailValid = filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email) <= 254;
+        $nameValid = preg_match('/^\p{L}[\p{L}\p{M}\s\'’.-]{1,59}$/u', $name) === 1
+            && preg_match_all('/\p{L}/u', $name) >= 2;
+        $messageValid = preg_match('/^.{10,}$/su', $userMessage) === 1;
+
+        if (!$emailValid || !$nameValid || !$messageValid) {
             http_response_code(400);
             echo json_encode(['success' => false, 'error' => 'Invalid input data']);
             exit;

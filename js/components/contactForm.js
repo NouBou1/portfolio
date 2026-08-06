@@ -4,13 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
     initContactForm();
 });
 
+// Letters (any alphabet) plus the separators that occur in real names.
+const NAME_PATTERN = /^\p{L}[\p{L}\p{M}\p{Zs}'’.-]*$/u;
+const LETTER_PATTERN = /\p{L}/gu;
+
+// Local part without leading, trailing or doubled dots, followed by at least
+// one domain label and a TLD of two or more letters.
+const EMAIL_PATTERN =
+    /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+
 const VALIDATION_RULES = {
     name: {
-        validate: (value) => value.trim().length >= 2,
+        validate: (value) => isValidName(value),
         errorKey: "formErrorName",
     },
     email: {
-        validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()),
+        validate: (value) => isValidEmail(value),
         errorKey: "formErrorEmail",
     },
     message: {
@@ -22,6 +31,20 @@ const VALIDATION_RULES = {
         errorKey: "formErrorConsent",
     },
 };
+
+function isValidName(value) {
+    const name = value.trim();
+    if (name.length < 2 || name.length > 60) return false;
+    if (!NAME_PATTERN.test(name)) return false;
+
+    // Guards against inputs like "a." or "-", which the pattern alone allows.
+    return (name.match(LETTER_PATTERN) ?? []).length >= 2;
+}
+
+function isValidEmail(value) {
+    const email = value.trim();
+    return email.length <= 254 && EMAIL_PATTERN.test(email);
+}
 
 function initContactForm() {
     const form = document.getElementById("contactForm");
@@ -78,9 +101,9 @@ function initContactForm() {
         submitBtn.textContent = translate("formSending");
 
         const payload = {
-            name: fields.name.value,
-            email: fields.email.value,
-            message: fields.message.value,
+            name: fields.name.value.trim(),
+            email: fields.email.value.trim(),
+            message: fields.message.value.trim(),
         };
 
         try {
