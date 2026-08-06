@@ -259,6 +259,19 @@ body.has-menu-open {
     font-weight: 500;
 }
 
+.has-reveal .reveal {
+    opacity: 0;
+    translate: 0 var(--reveal-from, 28px);
+    transition: opacity 0.7s ease, translate 0.7s ease;
+    transition-delay: 0s;
+}
+
+.has-reveal .reveal.is-revealed {
+    opacity: 1;
+    translate: none;
+    transition-delay: calc(var(--reveal-index, 0) * 70ms);
+}
+
 @media (max-width: 900px) {
     .header__left {
         display: none;
