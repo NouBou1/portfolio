@@ -164,6 +164,7 @@
     position: fixed;
     inset: 0;
     max-width: min(1100px, 92vw);
+    height: min(88vh, 640px);
     max-height: 88vh;
     margin: auto;
     padding: 0;
