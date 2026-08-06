@@ -238,8 +238,8 @@ body.has-menu-open {
 }
 
 .section {
-    /* Capped so the centred content does not drift apart on tall screens. */
     min-height: min(89svh, 900px);
+    padding-block: clamp(3rem, 8vh, 6rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
