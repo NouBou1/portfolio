@@ -455,6 +455,13 @@
     }
 }
 
+@media (min-width: 1600px) and (min-height: 701px) and (min-aspect-ratio: 2 / 1) {
+
+    .marquee {
+        bottom: clamp(4rem, 12vh, 11rem);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     .marquee__track,
