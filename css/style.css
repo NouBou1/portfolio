@@ -186,14 +186,41 @@ body.has-menu-open {
 }
 
 .logo__mark {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
+/* Soft backlight that fades in behind the mark on hover. */
+.logo__mark::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(61, 207, 182, 0.18) 0%, transparent 70%);
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity var(--transition-medium), transform var(--transition-medium);
+    pointer-events: none;
+}
+
+.logo:hover .logo__mark::before,
+.logo:focus-visible .logo__mark::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
 .logo__mark img {
+    position: relative;
     height: 48px;
     width: auto;
+    transition: filter var(--transition-medium);
+}
+
+.logo:hover .logo__mark img,
+.logo:focus-visible .logo__mark img {
+    filter: drop-shadow(0 0 6px rgba(61, 207, 182, 0.22));
 }
 
 .logo__text {
@@ -201,6 +228,13 @@ body.has-menu-open {
     font-size: 1.4rem;
     line-height: 1.1;
     font-weight: 700;
+    transition: color var(--transition-fast), text-shadow var(--transition-medium);
+}
+
+.logo:hover .logo__text,
+.logo:focus-visible .logo__text {
+    color: var(--color-accent);
+    text-shadow: 0 0 12px rgba(61, 207, 182, 0.18);
 }
 
 .section {
