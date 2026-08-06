@@ -293,7 +293,7 @@
     z-index: 2;
     left: -8%;
     right: -8%;
-    bottom: 4.5rem;
+    bottom: 3.5rem;
     overflow: hidden;
     transform: rotate(-3deg);
     border-top: 1px solid var(--color-border);
