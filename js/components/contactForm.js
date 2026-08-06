@@ -98,6 +98,7 @@ function initContactForm() {
         }
 
         submitBtn.disabled = true;
+        submitBtn.classList.remove("is-sent");
         submitBtn.textContent = translate("formSending");
 
         const payload = {
@@ -123,6 +124,7 @@ function initContactForm() {
                 Object.keys(validationState).forEach((key) => (validationState[key] = false));
                 clearAllErrors(form);
                 submitBtn.textContent = translate("formSent");
+                submitBtn.classList.add("is-sent");
             } else {
                 submitBtn.textContent = translate("formError");
             }
@@ -131,6 +133,7 @@ function initContactForm() {
         } finally {
             window.setTimeout(() => {
                 submitBtn.disabled = false;
+                submitBtn.classList.remove("is-sent");
                 submitBtn.textContent = translate("formSubmit");
             }, 3000);
         }

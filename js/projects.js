@@ -144,6 +144,7 @@ function bindProjectModalLinks(links, modal, render) {
             event.preventDefault();
             render(i);
             modal.showModal();
+            document.body.classList.add("has-modal-open");
         });
     });
 }
@@ -154,4 +155,5 @@ function bindProjectModalControls(modal, els, projects, state, render) {
     modal.addEventListener("click", (event) => {
         if (event.target === modal) modal.close();
     });
+    modal.addEventListener("close", () => document.body.classList.remove("has-modal-open"));
 }

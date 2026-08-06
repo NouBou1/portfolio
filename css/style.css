@@ -274,6 +274,10 @@ body.has-menu-open {
         padding-block: clamp(3rem, 12vw, 5rem);
     }
 
+    body.has-modal-open {
+        overflow: hidden;
+    }
+
     .section__eyebrow {
         font-size: 1.25rem;
     }
