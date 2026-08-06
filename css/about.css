@@ -5,8 +5,6 @@
     align-items: start;
     gap: clamp(2rem, 5vw, 4rem);
     padding-top: clamp(1rem, 2vw, 1.5rem);
-    max-width: min(100%, 150vh);
-    margin-inline: auto;
 }
 
 .about__media {

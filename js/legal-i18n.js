@@ -1,3 +1,5 @@
+import { registerTranslations } from "./i18n.js";
+
 const LEGAL_TRANSLATIONS = {
     en: {
         legalTitle: "Legal Notice",
@@ -70,6 +72,4 @@ const LEGAL_TRANSLATIONS = {
     },
 };
 
-Object.keys(LEGAL_TRANSLATIONS).forEach((lang) => {
-    Object.assign(TRANSLATIONS[lang], LEGAL_TRANSLATIONS[lang]);
-});
+registerTranslations(LEGAL_TRANSLATIONS);

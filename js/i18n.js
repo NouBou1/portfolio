@@ -1,3 +1,5 @@
+const LANG_STORAGE_KEY = "portfolio-lang";
+
 const TRANSLATIONS = {
     en: {
         navAbout: "About me",
@@ -141,6 +143,14 @@ const TRANSLATIONS = {
     },
 };
 
+// Lets page specific modules (e.g. the legal notice) add their own strings to
+// the shared dictionary before the toggle is initialised.
+export function registerTranslations(translations) {
+    Object.entries(translations).forEach(([lang, strings]) => {
+        if (TRANSLATIONS[lang]) Object.assign(TRANSLATIONS[lang], strings);
+    });
+}
+
 export function translate(key) {
     const lang = document.documentElement.lang || "en";
     return TRANSLATIONS[lang]?.[key] ?? TRANSLATIONS.en[key];
@@ -169,20 +179,39 @@ function applyLanguage(lang) {
     document.dispatchEvent(new CustomEvent("languagechange", { detail: { lang } }));
 }
 
-function activateLangButton(buttons, button) {
-    buttons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.lang === button.dataset.lang));
+function selectLanguage(buttons, lang) {
+    buttons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.lang === lang));
+    applyLanguage(lang);
+}
+
+function readStoredLang() {
+    try {
+        const stored = localStorage.getItem(LANG_STORAGE_KEY);
+        return TRANSLATIONS[stored] ? stored : null;
+    } catch {
+        // Storage can be blocked (private mode, cookie settings) — fall back to the default language.
+        return null;
+    }
+}
+
+function storeLang(lang) {
+    try {
+        localStorage.setItem(LANG_STORAGE_KEY, lang);
+    } catch {
+        // Remembering the choice is a nice-to-have, so a failed write must not break the toggle.
+    }
 }
 
 export function initLangToggle() {
     const buttons = document.querySelectorAll(".lang-toggle__btn");
-    const initialLang = document.querySelector(".lang-toggle__btn.is-active")?.dataset.lang || "en";
+    const defaultLang = document.querySelector(".lang-toggle__btn.is-active")?.dataset.lang || "en";
 
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
-            activateLangButton(buttons, button);
-            applyLanguage(button.dataset.lang);
+            selectLanguage(buttons, button.dataset.lang);
+            storeLang(button.dataset.lang);
         });
     });
 
-    applyLanguage(initialLang);
+    selectLanguage(buttons, readStoredLang() || defaultLang);
 }
