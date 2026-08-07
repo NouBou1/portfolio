@@ -35,6 +35,60 @@ function bindMobileMenuDismiss(burger, menu, setOpen) {
     });
 }
 
+export function initHeaderScrollState() {
+    const header = document.querySelector(".header");
+    if (!header) return;
+
+    const update = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+}
+
+export function initScrollSpy() {
+    if (!("IntersectionObserver" in window)) return;
+
+    const links = Array.from(document.querySelectorAll(".nav__link, .mobile-menu__link"));
+    const sections = collectSpySections(links);
+    if (!sections.length) return;
+
+    const visible = new Set();
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) visible.add(entry.target);
+            else visible.delete(entry.target);
+        });
+        setActiveSpyLink(links, sections, visible);
+    }, { rootMargin: "-45% 0px -45% 0px" });
+
+    sections.forEach((section) => observer.observe(section));
+}
+
+function collectSpySections(links) {
+    const seen = new Set();
+    const sections = [];
+
+    links.forEach((link) => {
+        const id = link.hash.slice(1);
+        const section = id && !seen.has(id) ? document.getElementById(id) : null;
+        if (!section) return;
+        seen.add(id);
+        sections.push(section);
+    });
+
+    return sections;
+}
+
+function setActiveSpyLink(links, sections, visible) {
+    const active = sections.find((section) => visible.has(section));
+    links.forEach((link) => {
+        const isActive = Boolean(active) && link.hash === `#${active.id}`;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+    });
+}
+
 export function initScrollIndicator() {
     const indicator = document.querySelector(".scroll-indicator");
     if (!indicator) return;

@@ -18,7 +18,7 @@ body.has-menu-open {
 }
 
 .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -26,6 +26,15 @@ body.has-menu-open {
     height: 90px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.header.is-scrolled {
+    background-color: rgba(28, 28, 28, 0.85);
+    border-bottom-color: var(--color-accent-soft);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .header__inner {
@@ -97,9 +106,14 @@ body.has-menu-open {
     pointer-events: none;
 }
 
-.nav__link:hover::after {
+.nav__link:hover::after,
+.nav__link.is-active::after {
     opacity: 1;
     transform: translateX(-50%) scale(1);
+}
+
+.nav__link.is-active {
+    color: var(--color-accent);
 }
 
 /* ---------- Burger + mobile menu ---------- */
@@ -171,7 +185,8 @@ body.has-menu-open {
     transition: color var(--transition-fast);
 }
 
-.mobile-menu__link:hover {
+.mobile-menu__link:hover,
+.mobile-menu__link.is-active {
     color: var(--color-accent);
 }
 
@@ -239,6 +254,7 @@ body.has-menu-open {
 
 .section {
     min-height: min(89svh, 900px);
+    scroll-margin-top: 90px;
     padding-block: clamp(3rem, 8vh, 6rem);
     display: flex;
     flex-direction: column;
@@ -299,6 +315,10 @@ body.has-menu-open {
 @media (max-width: 600px) {
     .header {
         height: 76px;
+    }
+
+    .section {
+        scroll-margin-top: 76px;
     }
 
     .logo__mark img {
