@@ -26,20 +26,19 @@
     height: 100%;
     border-radius: 12px;
     background-image: repeating-linear-gradient(45deg, var(--color-accent) 0 1.5px, transparent 1.5px 26px);
+    pointer-events: none;
 }
 
-@media (hover: hover) {
-    .about__frame {
-        opacity: 0;
-        transform: translate(var(--frame-offset), calc(-1 * var(--frame-offset)));
-        transition: opacity var(--transition-medium), transform var(--transition-medium);
-        pointer-events: none;
-    }
+.has-reveal .about__media.reveal .about__frame {
+    opacity: 0;
+    transform: translate(var(--frame-offset), calc(-1 * var(--frame-offset)));
+    transition: opacity var(--transition-medium), transform var(--transition-medium);
+}
 
-    .about__media:hover .about__frame {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
+.has-reveal .about__media.reveal.is-revealed .about__frame {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition-delay: 220ms;
 }
 
 .about__image {
