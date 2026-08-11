@@ -23,6 +23,7 @@
 
 .testimonials__viewport {
     --viewport-fade: clamp(1.5rem, 6vw, 7rem);
+    --viewport-gutter: 2rem;
     --viewport-bleed: 2rem;
     width: calc(100% - 2 * var(--container-padding));
     max-width: calc(var(--container-width) - 2 * var(--container-padding));
@@ -30,6 +31,8 @@
     margin-block: calc(-1 * var(--viewport-bleed));
     margin-inline: auto;
     overflow: hidden;
+    touch-action: pan-y pinch-zoom;
+    cursor: grab;
     -webkit-mask-image: linear-gradient(to right,
             transparent 0,
             #000 var(--viewport-fade),
@@ -51,9 +54,16 @@
     will-change: transform;
 }
 
+.testimonials__track.is-dragging {
+    transition: none;
+    cursor: grabbing;
+    user-select: none;
+}
+
 .testimonial {
     position: relative;
-    flex: 0 0 min(640px, 78vw);
+    flex: 0 0 min(640px, 100% - 2 * (var(--viewport-fade) + var(--viewport-gutter)));
+    min-width: 0;
     display: flex;
     flex-direction: column;
     padding: clamp(1.75rem, 3vw, 2.5rem);
@@ -108,6 +118,7 @@
 
 .testimonial__line {
     flex: 1;
+    min-width: 2rem;
     height: 1px;
     background-color: var(--color-accent);
     opacity: 0.6;
@@ -118,7 +129,7 @@
     font-size: 1rem;
     color: var(--color-text);
     opacity: 0.85;
-    white-space: nowrap;
+    text-align: right;
 }
 
 .testimonials__controls {
@@ -198,14 +209,16 @@
 
     .testimonials__viewport {
         --viewport-fade: clamp(0.75rem, 3vw, 1.5rem);
-    }
-
-    .testimonial {
-        flex: 0 0 min(640px, 82vw);
+        --viewport-gutter: 1rem;
     }
 }
 
 @media (max-width: 600px) {
+    .testimonials__viewport {
+        --viewport-fade: 0.5rem;
+        --viewport-gutter: 0.75rem;
+    }
+
     .testimonial {
         padding: clamp(1.25rem, 5vw, 2.5rem);
     }
@@ -224,5 +237,9 @@
 
     .testimonial__footer {
         gap: 0.75rem;
+    }
+
+    .testimonial__author {
+        font-size: 0.9rem;
     }
 }

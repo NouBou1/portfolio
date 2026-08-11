@@ -26,3 +26,55 @@
 # <IfModule mod_headers.c>
 #     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 # </IfModule>
+
+# ---------------------------------------------------------------
+# Compression
+#
+# Only text based types are listed. woff2, PNG and JPEG carry their
+# own compression — running deflate over them costs CPU on every
+# request and typically makes the response a few bytes larger.
+# SVG is the exception: it is XML and compresses very well.
+# ---------------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------------
+# Caching
+#
+# HTML deliberately stays uncached: the file names here carry no
+# content hash, so a cached index.html would keep pointing at old
+# CSS and JS after a deploy. One month on the assets is safe as
+# long as their names stay stable — if you replace an image, either
+# rename it or clear the cache.
+# ---------------------------------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    ExpiresByType text/html "access plus 0 seconds"
+
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # revalidate instead of no-store: the browser may keep the file and
+    # only asks whether it changed, which still saves the transfer.
+    <FilesMatch "\.(html|php)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+</IfModule>

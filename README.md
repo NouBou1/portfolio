@@ -64,7 +64,6 @@ Sender and recipient address are configured at the top of [php/contact.php](php/
 | [Join](https://join.n-boussaada.de) — Kanban style task manager with drag & drop | JavaScript, HTML, CSS, Firebase |
 | [El Pollo Loco](https://el-pollo-loco.n-boussaada.de) — object-oriented jump, run & throw game | HTML, CSS, JavaScript |
 | [Pokédex](https://pokedex.n-boussaada.de) — Pokémon browser built on the PokéAPI | HTML, CSS, JavaScript, REST API |
-| [SHK-Toolmate](https://shk-mate.n-boussaada.de) — offline capable field app for HVAC tradespeople | HTML, CSS, JavaScript, Capacitor |
 
 ## Contact
 

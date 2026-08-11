@@ -50,6 +50,10 @@ function initContactForm() {
     const form = document.getElementById("contactForm");
     if (!form) return;
 
+    // Als Dauer statt als Zeitstempel gesendet, damit eine falsch gestellte
+    // Uhr auf dem Client die Serverpruefung nicht aushebelt.
+    const openedAt = Date.now();
+
     const fields = {
         name: form.elements.name,
         email: form.elements.email,
@@ -105,6 +109,8 @@ function initContactForm() {
             name: fields.name.value.trim(),
             email: fields.email.value.trim(),
             message: fields.message.value.trim(),
+            contact_reference: form.elements.contact_reference?.value ?? "",
+            elapsedMs: Date.now() - openedAt,
         };
 
         try {

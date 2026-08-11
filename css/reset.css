@@ -42,3 +42,27 @@ button {
   background: none;
   cursor: pointer;
 }
+
+/* Reduced motion.
+ *
+ * Steht hier, weil es das scroll-behavior oben mit zuruecknimmt, und
+ * arbeitet bewusst mit !important: die Section-Stylesheets werden nach
+ * reset.css geladen und wuerden sonst gewinnen.
+ *
+ * Die Dauer wird auf 0.01ms gesetzt statt auf 0 oder none. Klingt nach
+ * Haarspalterei, ist aber der Punkt: bei einer Dauer von 0 feuert kein
+ * transitionend mehr, und genau daran haengt die Endlosschleife des
+ * Testimonial-Karussells (siehe bindTestimonialLoop). Ein Wert knapp
+ * ueber 0 ist fuer das Auge sofort und fuer das Event trotzdem da.
+ */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

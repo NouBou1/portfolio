@@ -125,6 +125,21 @@
     transition: background-color 5000s ease-in-out 0s;
 }
 
+/* Honeypot. Bewusst nicht display:none — das erkennen viele Bots und lassen
+   das Feld dann leer. Aus dem Layout genommen, ohne die Seitenbreite zu
+   beeinflussen. */
+.contact__trap {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
 .contact__checkbox {
     display: flex;
     align-items: flex-start;

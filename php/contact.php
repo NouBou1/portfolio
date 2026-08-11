@@ -1,14 +1,71 @@
 <?php
 
-// CORS headers (for Angular / frontend apps)
-header("Access-Control-Allow-Origin: *");
+// CORS. Bewusst eine Allowlist statt "*": das Formular liegt auf derselben
+// Domain und braucht CORS gar nicht. "*" laedt nur dazu ein, das Postfach von
+// fremden Seiten aus vollzuschreiben.
+$allowedOrigins = [
+    "https://n-boussaada.de",
+    "https://www.n-boussaada.de",
+];
+
+$origin = $_SERVER["HTTP_ORIGIN"] ?? "";
+if (in_array($origin, $allowedOrigins, true)) {
+    header("Access-Control-Allow-Origin: " . $origin);
+}
+header("Vary: Origin");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json; charset=utf-8");
 
 // ------------------------------------------------------------
+// Spam-Schutz
+// ------------------------------------------------------------
+
+// Mindestzeit zwischen Formularaufbau und Absenden. Menschen tippen Name,
+// E-Mail und eine Nachricht mit >= 10 Zeichen nicht in unter drei Sekunden.
+define("MIN_FILL_MS", 3000);
+
+// Pro IP und Stunde. Grosszuegig genug fuer einen Tippfehler und einen
+// zweiten Anlauf, eng genug gegen Fluten.
+define("MAX_PER_HOUR", 5);
+
+/**
+ * Zaehlt die Absendeversuche einer IP im laufenden Zeitfenster.
+ *
+ * Die IP wird nur gehasht abgelegt, nie im Klartext: fuer die Zaehlung
+ * reicht ein wiedererkennbarer Schluessel, und so liegt auf der Platte
+ * kein personenbezogenes Datum herum.
+ */
+function rateLimitExceeded($ip)
+{
+    $window = 3600;
+    $now = time();
+    $file = sys_get_temp_dir() . "/contact-rate-" . hash("sha256", $ip) . ".json";
+
+    $hits = [];
+    if (is_readable($file)) {
+        $decoded = json_decode((string) file_get_contents($file), true);
+        if (is_array($decoded)) {
+            foreach ($decoded as $timestamp) {
+                if (is_int($timestamp) && $timestamp > $now - $window) {
+                    $hits[] = $timestamp;
+                }
+            }
+        }
+    }
+
+    if (count($hits) >= MAX_PER_HOUR) {
+        return true;
+    }
+
+    $hits[] = $now;
+    @file_put_contents($file, json_encode($hits), LOCK_EX);
+    return false;
+}
+
+// ------------------------------------------------------------
 // WICHTIG:
-// Deine eigene Adresse in Zeile 15 setzen!
+// Eigene Adresse unten bei $siteEmail setzen!
 // ------------------------------------------------------------
 
 // >>> DEINE EMAIL HIER EINTRAGEN <<<
@@ -45,6 +102,31 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $email = trim($params->email ?? '');
         $name = trim($params->name ?? '');
         $userMessage = trim($params->message ?? '');
+
+        // Honeypot. Absichtlich mit success=true beantwortet: eine ehrliche
+        // Fehlermeldung wuerde dem Bot verraten, welches Feld ihn verraten hat.
+        if (trim($params->contact_reference ?? '') !== '') {
+            echo json_encode(['success' => true]);
+            exit;
+        }
+
+        // Zu schnell abgeschickt. Hier bewusst ein sichtbarer Fehler statt
+        // eines stillen Schluckens: trifft es doch mal einen echten Menschen,
+        // sieht er es und der zweite Versuch geht durch.
+        $elapsedMs = $params->elapsedMs ?? 0;
+        if (!is_numeric($elapsedMs) || $elapsedMs < MIN_FILL_MS) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => 'Submitted too quickly']);
+            exit;
+        }
+
+        // REMOTE_ADDR statt X-Forwarded-For: letzteres kann der Absender frei
+        // setzen und damit das Limit pro Anfrage umgehen.
+        if (rateLimitExceeded($_SERVER['REMOTE_ADDR'] ?? 'unknown')) {
+            http_response_code(429);
+            echo json_encode(['success' => false, 'error' => 'Too many requests']);
+            exit;
+        }
 
         // Mirrors the client side rules, so a direct POST cannot bypass them.
         $emailValid = filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email) <= 254;
