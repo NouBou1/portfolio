@@ -1,6 +1,7 @@
 const TECH_ICONS = {
     html: "assets/icons/skills/html-logo.svg",
     css: "assets/icons/skills/css-logo.svg",
+    scss: "assets/icons/skills/scss.svg",
     javascript: "assets/icons/skills/javascript-icon.svg",
     firebase: "assets/icons/skills/firebase.svg",
     angular: "assets/icons/skills/angular.svg",
