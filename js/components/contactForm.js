@@ -69,7 +69,7 @@ function initContactForm() {
         consent: false,
     };
 
-    // Setup error message containers
+    
     setupErrorContainers(form, fields);
 
     // Bind validation on blur

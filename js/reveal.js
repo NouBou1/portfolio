@@ -1,3 +1,4 @@
+
 const REVEAL_GROUPS = [
     { selector: ".about__media, .about__content" },
     { selector: ".skills__inner > .section__eyebrow, .skills__card" },

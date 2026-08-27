@@ -48,7 +48,7 @@ const TRANSLATIONS = {
         contactEyebrow: "Contact me",
         contactTitle: "Let's work<br>together",
         contactSubtitle: "Got a problem to solve?",
-        contactText: "Encourage people to contact you and describe what role you are interested in. Show that you will add value to their projects through your work.",
+        contactText: "Whether you're hiring a junior frontend developer or need a website for your business — just tell me what you have in mind. I'll get back to you quickly and we can talk through your project, no strings attached.",
         contactCta: 'Need a Frontend developer? <a class="contact__link" href="#contactForm">Let\'s talk!</a>',
         formNameLabel: "What's your name?",
         formEmailLabel: "What's your email?",
@@ -116,7 +116,7 @@ const TRANSLATIONS = {
         contactEyebrow: "Kontakt",
         contactTitle: "Lass uns<br>zusammenarbeiten",
         contactSubtitle: "Hast du ein Problem zu lösen?",
-        contactText: "Ermutige Menschen, dich zu kontaktieren, und beschreibe, an welcher Rolle du interessiert bist. Zeige, dass du mit deiner Arbeit einen Mehrwert für ihre Projekte schaffst.",
+        contactText: "Ob du einen Junior-Frontend-Entwickler suchst oder eine Website für dein Business brauchst — schreib mir einfach, was du vorhast. Ich melde mich zeitnah zurück und wir besprechen dein Projekt ganz unverbindlich.",
         contactCta: 'Suchst du einen Frontend-Entwickler? <a class="contact__link" href="#contactForm">Lass uns reden!</a>',
         formNameLabel: "Wie heißt du?",
         formEmailLabel: "Wie lautet deine E-Mail-Adresse?",
@@ -129,10 +129,10 @@ const TRANSLATIONS = {
         formSending: "Wird gesendet...",
         formSent: "Nachricht gesendet!",
         formError: "Etwas ist schiefgelaufen",
-        formErrorName: "Bitte geben Sie einen gültigen Namen ein",
-        formErrorEmail: "Bitte geben Sie eine gültige E-Mail-Adresse ein",
-        formErrorMessage: "Bitte geben Sie eine Nachricht mit mindestens 10 Zeichen ein",
-        formErrorConsent: "Bitte akzeptieren Sie die Datenschutzerklärung",
+        formErrorName: "Bitte gib einen gültigen Namen ein",
+        formErrorEmail: "Bitte gib eine gültige E-Mail-Adresse ein",
+        formErrorMessage: "Bitte schreib eine Nachricht mit mindestens 10 Zeichen",
+        formErrorConsent: "Bitte akzeptiere die Datenschutzerklärung",
         footerLocation: "Köln, Deutschland",
         footerEmail: "E-Mail",
         footerLegal: "Impressum",
@@ -194,7 +194,7 @@ function storeLang(lang) {
     try {
         localStorage.setItem(LANG_STORAGE_KEY, lang);
     } catch {
-        // Remembering the choice is a nice-to-have, so a failed write must not break the toggle.
+        // Remembering the choice is a nice-to-have.
     }
 }
 
