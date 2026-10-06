@@ -4,6 +4,7 @@ const TECH_ICONS = {
     scss: "assets/icons/skills/scss.svg",
     javascript: "assets/icons/skills/javascript-icon.svg",
     firebase: "assets/icons/skills/firebase.svg",
+    supabase: "assets/icons/skills/supabase.svg",
     angular: "assets/icons/skills/angular.svg",
     typescript: "assets/icons/skills/typescript.svg",
     "rest api": "assets/icons/skills/rest-api.svg",
@@ -115,7 +116,8 @@ function renderProjectModal(els, projects, state, i) {
     els.image.setAttribute("src", project.preview);
     els.image.setAttribute("alt", `${project.title} preview`);
     els.github.setAttribute("href", project.github);
-    els.live.setAttribute("href", project.live);
+    els.live.hidden = !project.live;
+    if (project.live) els.live.setAttribute("href", project.live);
 
     renderProjectModalStack(els.stack, project.stack);
 }
