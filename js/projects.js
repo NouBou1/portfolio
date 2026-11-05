@@ -9,6 +9,7 @@ const TECH_ICONS = {
     typescript: "assets/icons/skills/typescript.svg",
     "rest api": "assets/icons/skills/rest-api.svg",
     capacitor: "assets/icons/skills/capacitor.svg",
+    n8n: "assets/icons/skills/n8n.svg",
 };
 
 export function initProjectsPreview() {
