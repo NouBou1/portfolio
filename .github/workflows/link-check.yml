@@ -1,0 +1,33 @@
+name: Link check
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Every Monday at 06:00 UTC, so dead demo or repo links show up before anyone else sees them.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # LinkedIn answers automated requests with status 999, so it is skipped.
+          args: >-
+            --no-progress
+            --max-retries 3
+            --timeout 30
+            --exclude linkedin\.com
+            --root-dir ${{ github.workspace }}
+            './*.html'
+          fail: true
